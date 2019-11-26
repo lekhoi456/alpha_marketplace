@@ -3,7 +3,6 @@ pragma solidity ^0.5.0;
 contract Marketplace {
     string public name;
     uint public productCount = 0;
-    
     mapping(uint => Product) public products;
 
     struct Product {
@@ -21,6 +20,7 @@ contract Marketplace {
         address payable owner,
         bool purchased
     );
+
     event ProductPurchased(
         uint id,
         string name,
@@ -34,7 +34,7 @@ contract Marketplace {
     }
 
     function createProduct(string memory _name, uint _price) public {
-        // Require a name
+        // Require a valid name
         require(bytes(_name).length > 0);
         // Require a valid price
         require(_price > 0);
@@ -63,7 +63,7 @@ contract Marketplace {
         _product.owner = msg.sender;
         // Mark as purchased
         _product.purchased = true;
-        //Update the product
+        // Update the product
         products[_id] = _product;
         // Pay the seller by sending them Ether
         address(_seller).transfer(msg.value);
