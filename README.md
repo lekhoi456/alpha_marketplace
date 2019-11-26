@@ -1,8 +1,8 @@
 # Alpha Marketplace
 Step to run:
-*- sudo npm install
+- sudo npm install
 - truffle compile
 - truffle migrate
-- npm run start*
+- npm run start
 
 enjoy
